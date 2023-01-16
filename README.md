@@ -13,7 +13,7 @@ I will not attempt to do a full tutorial or make you a master of the logging mod
 
 1. You work in only 1 python file and you do not have much time to spend understanding loggers but want to see some the benefits (benefits can then be added without changing existing code).  Simply do the following :
   - Add the following lines at the beginning of your file
-  `
+  ```
         import logging
 
         logging.basicConfig(level=0, filename="log.txt", filemode="a", format='[%(asctime)s] %(name)s - %(levelname)s - %(message)s @ %(filename)s:%(lineno)s')
@@ -30,7 +30,7 @@ I will not attempt to do a full tutorial or make you a master of the logging mod
             logger.warning("msg")
             logger.error("msg")
             logger.critical("msg")
-       `
+     ```
    - You are all set. The benefits are medium, but your code is ready for other benefits ! An example is given [here](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py).
 2. You are interested in how logging works. Look [this](https://github.com/JulienBrn/BeautifulLogger/blob/main/tests/test_beautifullogger.py) example and read the comments.
 3. You work with multiple files and might create your own modules for others and perhaps even upload them to Pypi. Or you are simply curious. Please read a full tutorial or write me an email.
