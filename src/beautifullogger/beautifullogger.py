@@ -22,8 +22,5 @@ class BeautifulFormatter(logging.Formatter):
         formatter = logging.Formatter(self.mformat, style='{')
         return formatter.format(record)
 
-def make_beautiful(logger : logging.Logger) -> None:
-    ch = logging.StreamHandler()
-    ch.setLevel(0)
-    ch.setFormatter(BeautifulFormatter())
-    logger.addHandler(ch)
+def make_beautiful(handler : logging.Handler) -> None:
+    handler.setFormatter(BeautifulFormatter())
