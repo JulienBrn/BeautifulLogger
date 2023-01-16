@@ -3,6 +3,7 @@ import logging
 logging.basicConfig(level=0, filename="log.txt", filemode="a", format='[%(asctime)s] %(name)s - %(levelname)s - %(message)s @ %(filename)s:%(lineno)s')
 logging.info("New Run Start")
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG) #Do not change here, please change the level of handler instead
 logger_handler = logging.StreamHandler()
 logger.addHandler(logger_handler)
 import beautifullogger #Module I created for nice formatting
