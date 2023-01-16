@@ -28,7 +28,7 @@ def print_test_messages(logger : logging.Logger):
 print_test_messages(logging.getLogger())
 
 # Our suggestion : the "root" logger (created by defaultConfig) logs everything in the file log.txt
-# We add a logger per file which prints logs that we fill is relevant for our module (in terminal). We use the name of the module as name of the logger.
+# We add a logger per file which prints logs that we fill are relevant for our module (in terminal). We use the name of the module as name of the logger.
 
 logger = logging.getLogger(__name__)
 
@@ -48,8 +48,9 @@ print_test_messages(logger)
 # Let us see a few advantages
 # First, we can dismiss messages under a certain level for each logger separately. 
 # In a real setup, this means we can enable DEBUG messages for some modules and disable them for others
-# Or more simply, instead of erasing info/debug prints from the code when they are not necessary, we can simply change the "level" of the logger
-logger.setLevel(logging.WARNING)
+# Or more simply, instead of erasing info/debug prints from the code when they are not necessary, we can simply change the "level" of the logger_handler
+# Note that this is different from changing the level of the logger with logger.setLevel(). Try it and the difference can be seen in log.txt
+logger_handler.setLevel(logging.WARNING)
 print_test_messages(logger)
 
 # We can also change the display of the logger. 
@@ -60,5 +61,5 @@ beautifullogger.make_beautiful(logger_handler) #Or logger.handlers[0]
 print_test_messages(logger)
 
 # Let us just show how they are all displayed by resetting the level
-logger.setLevel(logging.DEBUG)
+logger_handler.setLevel(logging.DEBUG)
 print_test_messages(logger)
