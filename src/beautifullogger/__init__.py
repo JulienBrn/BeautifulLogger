@@ -1,0 +1,1 @@
+from beautifullogger.beautifullogger import make_beautiful
