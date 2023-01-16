@@ -13,7 +13,7 @@ I will not attempt to do a full tutorial or make you a master of the logging mod
 
 1. You work in only 1 python file and you do not have much time to spend understanding loggers but want to see some the benefits (benefits can then be added without changing existing code).  Simply do the following :
   - Add the following lines at the beginning of your file
-```
+```python
         import logging
 
         logging.basicConfig(level=0, filename="log.txt", filemode="a", format='[%(asctime)s] %(name)s - %(levelname)s - %(message)s @ %(filename)s:%(lineno)s')
