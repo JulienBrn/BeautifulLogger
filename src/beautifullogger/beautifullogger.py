@@ -14,7 +14,6 @@ class BeautifulFormatter(logging.Formatter):
     }
 
     def get_colored_level(self, level, levelname) :
-        # if(level <= logging.DEBUG):
         if(levelname in self.colors) :
             (fontc, backc) = self.colors[levelname]
             if(fontc!="" and backc!=""):
@@ -25,15 +24,7 @@ class BeautifulFormatter(logging.Formatter):
                 return termcolor.colored(" {:8s} ".format(levelname), backc)
         else:
             return " {:8s} ".format(levelname)
-        # elif(level <= logging.INFO):
-        #     return termcolor.colored(" {:8s} ".format(levelname), "green")
-        # elif(level <= logging.WARNING):
-        #     return termcolor.colored(" {:8s} ".format(levelname), "green", "on_yellow")
-        # elif(level <= logging.ERROR):
-        #     return termcolor.colored(" {:8s} ".format(levelname), "green", "on_red")
-        # elif(level <= logging.CRITICAL):
-        #     return termcolor.colored(" {:8s} ".format(levelname), "white", "on_red")
-
+            
     def format(self, record):
         record.coloredlevel=self.get_colored_level(record.levelno, record.levelname) 
         formatter = logging.Formatter(self.mformat, style='{')
