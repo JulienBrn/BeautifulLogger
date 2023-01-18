@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name='beautifullogger',
     packages=['beautifullogger'],
-    version='0.7',
+    version='1.9',
     license='MIT',
     description = 'A very simple log formatter for the logging module that can be used as is',
     author="Julien Braine",
