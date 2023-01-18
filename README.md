@@ -24,7 +24,7 @@ Simply use `pip install beautifullogger`
 Most of the usage comes from correctly using the [logging](https://docs.python.org/3/library/logging.html) python module.
 Here we describe what we believe is appropriate for beginners.
 
-### Basic one file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
+### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
 
 A simple use case is when one uses only a single file (view this [example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)).
 In that case, do the following:
@@ -57,12 +57,8 @@ The basic usage is the following:
 2. In the support files, we do not use *BeautifulLogger* and only use the python [logging](https://docs.python.org/3/library/logging.html) module:
     1. `import logging`
     2. `logger = logging.getLogger(__name__)`. This creates a logger with same name as the current file.
-    3. Then use the following functions to log messages:
-        - `logger.debug(msg)` : for messages to help you debug your code
-        - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
-        - `logger.warning(msg)` : for messages that displays information suggesting that things may not go as expected
-        - `logger.error(msg)` : for error messages stating that something went wrong
-        - `logger.critical(msg)` : for error messages from which you can not recover and the application needs to be stopped. Note that we did not use setLevel before this step.
+    3. Then use the previous 5 functions to log messages (debug, info, ...).
+     Note that we did not use setLevel before this step because we are in a support file.
 
 ### Changing colors and adding logging levels
 
