@@ -34,11 +34,11 @@ In that case, do the following:
 4. `logger = logging.getLogger(__name__)`. This creates a logger with name "__main__" (the relevance of this will be seen latter).
 5. Setup the messages you wish to see with `logger.setLevel(logging.INFO)` (for example). See [setLevel](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) for more information
 6. Then use the following functions to log messages:
-  - `logger.debug(msg)` : for messages to help you debug your code
-  - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
-  - `logger.warning(msg)` : for messages that displays information suggesting that things may not go as expected
-  - `logger.error(msg)` : for error messages stating that something went wrong
-  - `logger.critical(msg)` : for error messages from which you can not recover and the application needs to be stopped
+    - `logger.debug(msg)` : for messages to help you debug your code
+    - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
+    - `logger.warning(msg)` : for messages that displays information suggesting that things may not go as expected
+    - `logger.error(msg)` : for error messages stating that something went wrong
+    - `logger.critical(msg)` : for error messages from which you can not recover and the application needs to be stopped
 
 Note that the code mainly uses the logging library and the dependancy on *BeautifulLogger* is only for the setup (which can be replaced by [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) or even more advanced options).
 
@@ -52,19 +52,18 @@ Let us distinguish 2 types of files :
 The basic usage is the following:
 1. In the "main" file, write code as in *Basic one file usage*. Additional possibilities are available and will be discussed in the next section.
 2. In the support files, we do not use *BeautifulLogger* and only use the python [logging](https://docs.python.org/3/library/logging.html) module:
-  1. `import logging`
-  2. `logger = logging.getLogger(__name__)`. This creates a logger with same name as the current file.
-  3. Then use the following functions to log messages:
-    - `logger.debug(msg)` : for messages to help you debug your code
-    - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
-    - `logger.warning(msg)` : for messages that displays information suggesting that things may not go as expected
-    - `logger.error(msg)` : for error messages stating that something went wrong
-    - `logger.critical(msg)` : for error messages from which you can not recover and the application needs to be stopped 
-    Note that we did not use setLevel before this step.
+    1. `import logging`
+    2. `logger = logging.getLogger(__name__)`. This creates a logger with same name as the current file.
+    3. Then use the following functions to log messages:
+        - `logger.debug(msg)` : for messages to help you debug your code
+        - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
+        - `logger.warning(msg)` : for messages that displays information suggesting that things may not go as expected
+        - `logger.error(msg)` : for error messages stating that something went wrong
+        - `logger.critical(msg)` : for error messages from which you can not recover and the application needs to be stopped. Note that we did not use setLevel before this step.
 
 ### Changing colors and adding logging levels
 
-Documentation to come. Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`
+Documentation to come. Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`.
 
 ### Modifying loggers from imported files/modules
 
