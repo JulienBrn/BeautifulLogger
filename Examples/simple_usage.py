@@ -2,6 +2,7 @@ import logging
 import beautifullogger
 
 beautifullogger.setup_beautiful_logging()
+# beautifullogger.setColor(logging.DEBUG,"magenta", "on_red", attrs=["bold", "reverse", "blink"] )
 logger=logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
