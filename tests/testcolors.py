@@ -1,10 +1,4 @@
-import beautifullogger
-import logging
-
-beautifullogger.setup_beautiful_logging()
-# beautifullogger.setColor(logging.DEBUG,"magenta", "on_red", attrs=["bold", "reverse", "blink"] )
-logger=logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+import termcolor
 
 
 COLORS = {
@@ -49,6 +43,8 @@ HIGHLIGHTS = {
 
 for font in COLORS :
     for back in HIGHLIGHTS :
-        beautifullogger.setColor(logging.DEBUG, font, back)
-        logger.debug("test color {} on {}".format(font, back))
+        try :
+            print(termcolor.colored("  TEST  ", font, back)+ "  test color {} on {}".format(font, back))
+        except BaseException:
+            pass
 
