@@ -1,6 +1,8 @@
 # BeautifulLogger
 A beautiful default configuration for Python loggers. 
 
+Note: improved error messages for invalid configurations should come in the next version.
+
 ## Goals :
 1. Show that loggers are better than prints :
     - Just as simple to use
