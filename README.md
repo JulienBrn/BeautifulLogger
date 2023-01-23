@@ -1,4 +1,7 @@
 # BeautifulLogger
+
+**WARNING** Version 3.0 made a complete overhaul of the code. Documentation is not yet updated. Please use version 2.1.
+
 A beautiful default configuration for Python loggers. 
 
 Note: improved error messages for invalid configurations should come in the next version.
