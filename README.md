@@ -98,7 +98,7 @@ Documentation to come. Relevant functions are `beautifullogger.setColor` and `be
 
 
 
-
+<!-- 
 This creates a default setup where logs are written to file logname in mode logmode. Default is "log.txt" and "a" (for append to file). This replaces the call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) and works similarly.   
 Colors are set by the theme. The theme variable can either be set to a local file or to a url. Examples of themes are available in the [themes](https://github.com/JulienBrn/BeautifulLogger/tree/main/themes) folder. Note that you cannot use the github url directly to load them and should use the rawgithub url instead. For example: [https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json](https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json).  
-To create your own colors, you should be aware that colors and attributes are then fed to [termcolor](https://pypi.org/project/termcolor/), but not all configurations are supported by all terminals. To view what is supported in your terminal and how it is displayed, you may use the [testcolors script](https://github.com/JulienBrn/BeautifulLogger/blob/main/tests/testcolors.py).
+To create your own colors, you should be aware that colors and attributes are then fed to [termcolor](https://pypi.org/project/termcolor/), but not all configurations are supported by all terminals. To view what is supported in your terminal and how it is displayed, you may use the [testcolors script](https://github.com/JulienBrn/BeautifulLogger/blob/main/tests/testcolors.py). -->
