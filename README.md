@@ -77,7 +77,7 @@ Documentation to come. Does not depend on *BeautifulLogger*  and a basic princip
 
 ### setup parameters
 
-Proper documentation to come. For now, the default parameters and their values are listed below. Note: an additional "configFile" parameter can be provided and allows to set up options in a json text file.
+Proper documentation to come. For now, the default parameters and their values are listed below. Note: an additional "configFile" parameter can be provided and allows to set up options in a json text file. Note that colors are based on the colorama module.
 
 ```Python
 "displayLevel" : 0, 
