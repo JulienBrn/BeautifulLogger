@@ -89,7 +89,8 @@ Proper documentation to come. For now, the default parameters and their values a
 
 ## Implementation in relation to the logging module (useful for more advanced usage)
 
-Documentation to come. Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`.
+Documentation to come. 
+<!-- Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`. -->
 
 
 
