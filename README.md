@@ -1,6 +1,6 @@
 # BeautifulLogger
 
-**WARNING** Version 3.0 made a complete overhaul of the code. Documentation is not yet updated. Please use version 2.1.
+**WARNING** Version 3.0 made a complete overhaul of the code. Documentation and examples are not yet fully updated and you may see some issues. 
 
 A beautiful default configuration for Python loggers. 
 
@@ -13,10 +13,9 @@ Note: improved error messages for invalid configurations should come in the next
     - Can contain extra information
     - Can save information to files
     - You can change display/information **without modifying the original code**
-2. Provide simple default logger setup which shows the benefits (coloring, log file, ...). 
+2. Provide simple default logger setup which shows the benefits (coloring, log file, progress bars, ...). 
 3. The setup is optional and can be easily changed **without modifying the original code** so that you do not depend on *BeautifulLogger*
 
-This library is not addressed to advanced users of logging.
 
 ## Installation
 
@@ -34,11 +33,9 @@ In that case, do the following:
 
 1. `import logging`
 2. `import beautifullogger`
-3. `beautifullogger.setup_beautiful_logging(logname, logmode, theme)`. This creates a default setup where logs are written to file logname in mode logmode. Default is "log.txt" and "a" (for append to file). This replaces the call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) and works similarly.   
-Colors are set by the theme. The theme variable can either be set to a local file or to a url. Examples of themes are available in the [themes](https://github.com/JulienBrn/BeautifulLogger/tree/main/themes) folder. Note that you cannot use the github url directly to load them and should use the rawgithub url instead. For example: [https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json](https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json).  
-To create your own colors, you should be aware that colors and attributes are then fed to [termcolor](https://pypi.org/project/termcolor/), but not all configurations are supported by all terminals. To view what is supported in your terminal and how it is displayed, you may use the [testcolors script](https://github.com/JulienBrn/BeautifulLogger/blob/main/tests/testcolors.py).
+3. `beautifullogger.setup(named_params)`.  If you do not specify any parameters (default configuration), logging output is displayed with colors to your terminal and is also logged in a file named log.txt. Parameters will be discussed latter on.
 4. `logger = logging.getLogger(__name__)`. This creates a logger with name "__main__" (the relevance of this will be seen latter).
-5. Setup the messages you wish to see with `logger.setLevel(logging.INFO)` (for example). See [setLevel](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) for more information
+5. Setup the messages you wish to see with `beautifullogger.setDisplayLevel(logging.INFO)` (for example). See [setLevel](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) for more information. Note that this only changes the messages that are displayed. All messages are still logged to log.txt.
 6. Then use the following functions to log messages:
     - `logger.debug(msg)` : for messages to help you debug your code
     - `logger.info(msg)` : for messages that displays info to the user such as progress, extra information of loaded files, ...
@@ -63,10 +60,45 @@ The basic usage is the following:
     3. Then use the previous 5 functions to log messages (debug, info, ...).
      Note that we did not use setLevel before this step because we are in a support file.
 
-### Changing colors and adding logging levels
+### Logging progress bars
 
-Documentation to come. Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`.
+Documentation to come. Principle : you log with the normal logging module and add a progress information. If used without beautiful logger, the normal message is displayed. However, when using BeautifulLogger the extra information is processed to display progress bars instead of the logging message.
+
+ Examples:
+
+ 1. `logger.info("Test progressed by 20 out of 20 000 files", extra={"progress":{"counter" : "Test" , "update": 20, "max" : 20000, "unit" : "files"}})`
+ 2. `logger.info("Temp2 progressed by 20 out of 20 000 files", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})`
 
 ### Modifying loggers from imported files/modules
 
 Documentation to come. Does not depend on *BeautifulLogger*  and a basic principle is shown in [complex_usage.py](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/complex_usage.py)
+
+## Custumizing your logger
+
+### setup parameters
+
+Proper documentation to come. For now, the default parameters and their values are listed below. Note: an additional "configFile" parameter can be provided and allows to set up options in a json text file.
+
+```Python
+"displayLevel" : 0, 
+"displayFormat" : "[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}",
+"logfile" : "log.txt", "logmode" : "a",
+"logformat" : "[{asctime}] {levelname} @{name} {filename}:{lineno:<4d}: {message}",
+"style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] },
+```   
+
+## Implementation in relation to the logging module (useful for more advanced usage)
+
+Documentation to come. Relevant functions are `beautifullogger.setColor` and `beautifullogger.addLevel`.
+
+
+
+
+
+
+
+
+
+This creates a default setup where logs are written to file logname in mode logmode. Default is "log.txt" and "a" (for append to file). This replaces the call to [logging.basicConfig](https://docs.python.org/3/library/logging.html#logging.basicConfig) and works similarly.   
+Colors are set by the theme. The theme variable can either be set to a local file or to a url. Examples of themes are available in the [themes](https://github.com/JulienBrn/BeautifulLogger/tree/main/themes) folder. Note that you cannot use the github url directly to load them and should use the rawgithub url instead. For example: [https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json](https://cdn.githubraw.com/JulienBrn/BeautifulLogger/main/themes/pycharm.json).  
+To create your own colors, you should be aware that colors and attributes are then fed to [termcolor](https://pypi.org/project/termcolor/), but not all configurations are supported by all terminals. To view what is supported in your terminal and how it is displayed, you may use the [testcolors script](https://github.com/JulienBrn/BeautifulLogger/blob/main/tests/testcolors.py).
