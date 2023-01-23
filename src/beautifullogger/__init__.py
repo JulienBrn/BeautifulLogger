@@ -1,4 +1,1 @@
-from beautifullogger.beautifullogger import make_beautiful
-from beautifullogger.beautifullogger import setup_beautiful_logging
-from beautifullogger.beautifullogger import addLevel
-from beautifullogger.beautifullogger import setColor
+from beautifullogger.beautifullogger import getLogHandler, setup, getCounter, getStderrHandler, setDisplayLevel, setup, test
