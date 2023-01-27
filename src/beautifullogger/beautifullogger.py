@@ -86,7 +86,12 @@ class progressDisplay:
                 counter.unit=record.progress["unit"]
             if "auto-rm" in record.progress:
                 counter.leave=False
-            updateVal = record.progress["update"] if "update" in record.progress else 1
+            if "update" in record.progress:
+                updateVal = record.progress["update"] 
+            elif "count" in record.progress:
+                updateVal = record.progress["count"] - counter.count
+            else:
+                updateVal= 1
             counter.update(updateVal)
             if counter.total and counter.count>=counter.total:
                 counter.close()
@@ -104,7 +109,12 @@ def getCounter(name:str):
         logger.error("Attempting to get non-existant counter {}. Counters are {}".format(name, progressH.counters))
         raise KeyError("Attempting to get non-existant counter {}. Counters are {}".format(name, progressH.counters))
     
-
+def addCounter(name:str, counter:enlighten.Counter):
+    global progressH
+    if name in progressH.counters:
+        logger.warning("Attempting to add already existing counter (name is {}). Replacing it.".format(name))
+    progressH.counters[name] = counter
+    
 ### Seting Stderr formatter
 
 stderr_handler = ()

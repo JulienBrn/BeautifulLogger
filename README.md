@@ -87,6 +87,10 @@ Proper documentation to come. For now, the default parameters and their values a
 "style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] },
 ```   
 
+### Other functions
+
+Documentation to come.
+
 ## Implementation in relation to the logging module (useful for more advanced usage)
 
 Documentation to come. 
