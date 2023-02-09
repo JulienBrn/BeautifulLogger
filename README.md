@@ -1,5 +1,7 @@
 # BeautifulLogger
 
+![Screenshot from complex_usage.py](/Assets/complex.png?raw=true "Screenshot from complex_usage.py")
+
 **WARNING** Version 4.0 made a complete overhaul of the code. Documentation and examples are not yet fully updated and you may see some issues. 
 
 A beautiful default configuration for Python loggers. 
@@ -28,9 +30,28 @@ Here we describe what we believe is appropriate for beginners.
 
 ### QuickStart 
 
-The best way to quickly dive into what beautifullogger provides is by looking at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) folder and running the code!
+You can simply start by running
 
-![Screenshot from complex_usage.py](/Assets/complex.png?raw=true "Screenshot from complex_usage.py")
+```python
+
+import logging
+import beautifullogger
+
+beautifullogger.setup()
+logger=logging.getLogger(__name__)
+
+logger.debug("test debug")
+logger.info("test info")
+logger.warning("test warning")
+logger.error("test error")
+logger.critical("test critical")
+
+```
+
+![Screenshot from simple_usage.py](/Assets/simple.png?raw=true "Screenshot from simple_usage.py")
+
+and then look at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) folder for more complex use cases!
+
 
 ### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
 
