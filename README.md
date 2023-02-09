@@ -103,16 +103,18 @@ Documentation to come. Does not depend on *BeautifulLogger*  and a basic princip
 
 ## Custumizing your logger
 
-### setup parameters
+### Setup parameters
 
-Proper documentation to come. For now, the default parameters and their values are listed below. Note: an additional "configFile" parameter can be provided and allows to set up options in a json text file. Note that colors are based on the colorama module.
+Proper documentation to come. Simply look at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) and [Tests](https://github.com/JulienBrn/BeautifulLogger/tree/main/tests/SingleFile/PythonOptions) folders, they have most options detailed.
+<!-- 
+For now, the default parameters and their values are listed below. Note: an additional "configFile" parameter can be provided and allows to set up options in a json text file. Note that colors are based on the colorama module.
 
 ```Python
 "displayLevel" : 0, 
 "displayFormat" : "[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}",
 "logfile" : "log.txt", "logmode" : "a",
 "logformat" : "[{asctime}] {levelname} @{name} {filename}:{lineno:<4d}: {message}",
-"style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] },
+"style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] }, -->
 ```   
 
 ### Other functions
