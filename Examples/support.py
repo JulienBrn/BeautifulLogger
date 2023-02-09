@@ -3,8 +3,8 @@ import logging
 logger=logging.getLogger(__name__)
 
 def show():
-    logger.debug("test debug")
-    logger.info("test info")
-    logger.warning("test warning")
-    logger.error("test error")
-    logger.critical("test critical")
+    logger.debug("support test debug")
+    logger.info("support test info")
+    logger.warning("support test warning")
+    logger.error("support test error")
+    logger.critical("support test critical")

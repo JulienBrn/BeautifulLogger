@@ -1,10 +1,9 @@
 import logging
-# import termcolor
 import sys
 import json
 import requests
 import pathlib
-import enlighten
+from typing import List, Dict 
 
 logger=logging.getLogger(__name__)
 
@@ -72,15 +71,6 @@ def setDisplayLevel(level):
 
 ###Setup###
 
-
-defaultConfig={
-        "displayLevel" : 0, 
-        "displayFormat" : "[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}",
-        "logfile" : "log.txt", "logmode" : "a",
-        "logformat" : "[{asctime}] {levelname} @{name} {filename}:{lineno:<4d}: {message}",
-        "style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] },
-    }
-
 try:
     levelmap=logging.getLevelNamesMapping()
 except:
@@ -91,6 +81,15 @@ except:
         "ERROR" : 40,
         "CRITICAL" : 50
     }
+    
+def get_level(name: int | str):
+    if isinstance(name, int):
+        return name
+    try:
+        return levelmap[name]
+    except KeyError:
+        logger.error("Unable to find level {}. Defaulting to 0.".format(name))
+        return 0
 
 def get(str: str):
     try:
@@ -100,6 +99,8 @@ def get(str: str):
             return vars(colorama.Back)[str[5:]]
         elif "Style." in str:
              return vars(colorama.Style)[str[6:]]
+        elif str == "":
+            return ""
         else:
             logger.warning("Unrecognized style option {}. Continuing without this styling".format(str))
             return ""
@@ -107,26 +108,36 @@ def get(str: str):
         logger.warning("Unrecognized style option {}. Continuing without this styling".format(str))
         return ""
 
-def setup(**kwargs):
-    """ Setups beautiful logging by modifying the root logger. Possible named arguments are (and default values)
+class __opt:
+    def __init__(self, val):
+        self.val=val
 
-        "displayLevel" : 0, 
-        "displayFormat" : "[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}",
-        "logfile" : "log.txt", "logmode" : "a",
-        "logformat" : "[{asctime}] {levelname} @{name} {filename}:{lineno:<4d}: {message}",
-        "style" : {
-            "DEBUG" : "", 
-            "INFO" : "Fore.GREEN", 
-            "WARNING" : "Back.YELLOW", 
-            "ERROR" : "Back.RED Fore.WHITE", 
-            "CRITICAL" : "Back.RED + Fore.WHITE + Style.BRIGHT" 
-         },
-         "configFile": None
-   
-        If configFile is set, then additional configuration is then searched in the file or url that is specified.
+import inspect 
+
+def setup(
+    displayLevel: int = __opt(0), 
+    logformat: str = __opt("[{asctime}] {levelname:^8s} @{name} {filename}:{lineno:<4d}: {message}"),
+    displayFormat: str = __opt("[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}"), 
+    logfile: str = __opt("log.txt"),
+    logmode:str = __opt("a"),
+    style: Dict[int, str | List[str]] = __opt({
+        logging.DEBUG : "", 
+        logging.INFO : "Fore.GREEN", 
+        logging.WARNING : "Back.YELLOW", 
+        logging.ERROR : ["Back.RED", "Fore.WHITE"], 
+        logging.CRITICAL : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"]
+    }),
+    configFile: str | __opt = __opt(None)
+):
     """
-    global defaultConfig
-    paramConfig=kwargs
+        Do not worry about __opt, it is only to determine whether the argument was passed
+    """
+    params=locals()
+    paramConfig={k:v for k,v in params.items() if not isinstance(v, __opt)}
+    
+    signature = inspect.signature(setup)
+    defaultConfig={n:p.default.val for n,p in signature.parameters.items()}
+    
     config={}
     try:
         if "configFile" in paramConfig:
@@ -175,7 +186,7 @@ def setup(**kwargs):
         else:
             return ''.join([get(v) for v in val])
 
-    color_dict = {levelmap[name]: mget(val) for name, val in newConfig["style"].items()}
+    color_dict = {get_level(name): mget(val) for name, val in newConfig["style"].items()}
 
     logger.debug("Color dict is {}".format(color_dict))
 
@@ -193,33 +204,33 @@ def test(logger):
     logger.critical("test critical")
 
 
-if(__name__=="__main__"):
-    import time 
-    setup(configFile="themes/config.json")
-    test(logger)
-    logger.info("test", extra={"colorama": colorama.Back.GREEN + colorama.Style.BRIGHT + colorama.Fore.CYAN})
-    logger.info("test")
-    i=0
-    while i<30:
-        i=i+1
-        logger.info("Progressed", extra={"colorama":colorama.Fore.BLUE})
-        time.sleep(0.1)  # Simulate work
-    i=0
-    while i<30:
-        i=i+1
-        logger.info("Progressed by 20", extra={"progress":{"update": 20, "max" : 600}})
-        time.sleep(0.1)  # Simulate work
-    i=0
-    while i<30:
-        i=i+1
-        logger.info("", extra={"progress":{"counter":"  Temp", "update": 20.12, "max" : 500.9, "auto-rm" : True}})
-        time.sleep(0.1)  # Simulate work
-    i=0
-    while i<30:
-        i=i+1
-        logger.info("", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})
-        time.sleep(0.1)  # Simulate work
-    while i<1000:
-        i=i+1
-        logger.info("", extra={"progress":{"counter" : "Test" , "update": 20, "max" : 20000, "unit" : "files"}})
-        time.sleep(0.1)  # Simulate work
+# if(__name__=="__main__"):
+#     import time 
+#     setup(configFile="themes/config.json")
+#     test(logger)
+#     logger.info("test", extra={"colorama": colorama.Back.GREEN + colorama.Style.BRIGHT + colorama.Fore.CYAN})
+#     logger.info("test")
+#     i=0
+#     while i<30:
+#         i=i+1
+#         logger.info("Progressed", extra={"colorama":colorama.Fore.BLUE})
+#         time.sleep(0.1)  # Simulate work
+#     i=0
+#     while i<30:
+#         i=i+1
+#         logger.info("Progressed by 20", extra={"progress":{"update": 20, "max" : 600}})
+#         time.sleep(0.1)  # Simulate work
+#     i=0
+#     while i<30:
+#         i=i+1
+#         logger.info("", extra={"progress":{"counter":"  Temp", "update": 20.12, "max" : 500.9, "auto-rm" : True}})
+#         time.sleep(0.1)  # Simulate work
+#     i=0
+#     while i<30:
+#         i=i+1
+#         logger.info("", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})
+#         time.sleep(0.1)  # Simulate work
+#     while i<1000:
+#         i=i+1
+#         logger.info("", extra={"progress":{"counter" : "Test" , "update": 20, "max" : 20000, "unit" : "files"}})
+#         time.sleep(0.1)  # Simulate work

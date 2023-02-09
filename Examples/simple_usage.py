@@ -1,9 +1,8 @@
 import logging
 import beautifullogger
 
-beautifullogger.setup_beautiful_logging()
+beautifullogger.setup()
 logger=logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
 
 logger.debug("test debug")
 logger.info("test info")
