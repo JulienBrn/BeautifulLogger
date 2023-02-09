@@ -26,6 +26,10 @@ Simply use `pip install beautifullogger`
 Most of the usage comes from correctly using the [logging](https://docs.python.org/3/library/logging.html) python module.
 Here we describe what we believe is appropriate for beginners.
 
+### QuickStart 
+
+The best way to quickly dive into what beautifullogger provides is by looking at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) folder and running the code!
+
 ### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
 
 A simple use case is when one uses only a single file (view this [example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)).
