@@ -50,7 +50,7 @@ logger.critical("test critical")
 
 ![Screenshot from simple_usage.py](/Assets/simple.png?raw=true "Screenshot from simple_usage.py")
 
-and then look at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) folder for more complex use cases!
+and then look at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) and [Tests](https://github.com/JulienBrn/BeautifulLogger/tree/main/tests/SingleFile/PythonOptions) folders for more detailed use!
 
 
 ### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
@@ -87,7 +87,7 @@ The basic usage is the following:
     3. Then use the previous 5 functions to log messages (debug, info, ...).
      Note that we did not use setLevel before this step because we are in a support file.
 
-### Logging progress bars
+### Logging progress bars (DEPREDECATED)
 
 Removed, handling progress bars through logging was bad. It is now a separate module available [here](https://github.com/JulienBrn/TaskProgressDisplay) 
 <!-- Documentation to come. Principle : you log with the normal logging module and add a progress information. If used without beautiful logger, the normal message is displayed. However, when using BeautifulLogger the extra information is processed to display progress bars instead of the logging message.

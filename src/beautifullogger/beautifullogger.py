@@ -205,35 +205,3 @@ def test(logger):
     logger.warning("test warning")
     logger.error("test error")
     logger.critical("test critical")
-
-
-# if(__name__=="__main__"):
-#     import time 
-#     setup(configFile="themes/config.json")
-#     test(logger)
-#     logger.info("test", extra={"colorama": colorama.Back.GREEN + colorama.Style.BRIGHT + colorama.Fore.CYAN})
-#     logger.info("test")
-#     i=0
-#     while i<30:
-#         i=i+1
-#         logger.info("Progressed", extra={"colorama":colorama.Fore.BLUE})
-#         time.sleep(0.1)  # Simulate work
-#     i=0
-#     while i<30:
-#         i=i+1
-#         logger.info("Progressed by 20", extra={"progress":{"update": 20, "max" : 600}})
-#         time.sleep(0.1)  # Simulate work
-#     i=0
-#     while i<30:
-#         i=i+1
-#         logger.info("", extra={"progress":{"counter":"  Temp", "update": 20.12, "max" : 500.9, "auto-rm" : True}})
-#         time.sleep(0.1)  # Simulate work
-#     i=0
-#     while i<30:
-#         i=i+1
-#         logger.info("", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})
-#         time.sleep(0.1)  # Simulate work
-#     while i<1000:
-#         i=i+1
-#         logger.info("", extra={"progress":{"counter" : "Test" , "update": 20, "max" : 20000, "unit" : "files"}})
-#         time.sleep(0.1)  # Simulate work
