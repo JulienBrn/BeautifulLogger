@@ -30,6 +30,8 @@ Here we describe what we believe is appropriate for beginners.
 
 The best way to quickly dive into what beautifullogger provides is by looking at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) folder and running the code!
 
+![Screenshot from complex_usage.py](/BeautifulLogger/Assets/complex.png?raw=true "Screenshot from complex_usage.py")
+
 ### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
 
 A simple use case is when one uses only a single file (view this [example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)).
