@@ -132,6 +132,9 @@ def setup(
     """
         Do not worry about __opt, it is only to determine whether the argument was passed
     """
+    if logging.getLogger().handlers ==[]:
+        logging.basicConfig(format="[{asctime}] {levelname:^8s} @{name} {filename}:{lineno:<4d}: {message}", style='{')
+    
     params=locals()
     paramConfig={k:v for k,v in params.items() if not isinstance(v, __opt)}
     
@@ -145,10 +148,10 @@ def setup(
             logger.debug("Loading Logger Config from {}".format(configFile))
             if not pathlib.Path(configFile).exists():
                 logger.debug("Config file {} not found on local file system. Treating {} as an url.".format(configFile, configFile))
-                response = requests.get(configFile).text
+                response = requests.get(configFile)
                 if not response.ok:
                     raise ConnectionError("Impossible to download contents of {}. Response is {}", response)
-                config=json.loads()
+                config=json.loads(response.text)
             else:
                 with open(configFile) as user_file:
                     config = json.loads(user_file.read())
@@ -189,7 +192,7 @@ def setup(
     color_dict = {get_level(name): mget(val) for name, val in newConfig["style"].items()}
 
     logger.debug("Color dict is {}".format(color_dict))
-
+    logging.getLogger().handlers=[]
     makeLogHandler(logfile=newConfig["logfile"], logmode=newConfig["logmode"], format=newConfig["logformat"])
     makeStderrHandler(level=newConfig["displayLevel"], format=newConfig["displayFormat"])
     rootLogger.addHandler(log_handler)
