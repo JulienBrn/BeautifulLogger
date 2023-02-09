@@ -1,6 +1,6 @@
 # BeautifulLogger
 
-**WARNING** Version 3.0 made a complete overhaul of the code. Documentation and examples are not yet fully updated and you may see some issues. 
+**WARNING** Version 4.0 made a complete overhaul of the code. Documentation and examples are not yet fully updated and you may see some issues. 
 
 A beautiful default configuration for Python loggers. 
 
@@ -13,7 +13,7 @@ Note: improved error messages for invalid configurations should come in the next
     - Can contain extra information
     - Can save information to files
     - You can change display/information **without modifying the original code**
-2. Provide simple default logger setup which shows the benefits (coloring, log file, progress bars, ...). 
+2. Provide simple default logger setup which shows the benefits (coloring, log file, ...). 
 3. The setup is optional and can be easily changed **without modifying the original code** so that you do not depend on *BeautifulLogger*
 
 
@@ -62,12 +62,13 @@ The basic usage is the following:
 
 ### Logging progress bars
 
-Documentation to come. Principle : you log with the normal logging module and add a progress information. If used without beautiful logger, the normal message is displayed. However, when using BeautifulLogger the extra information is processed to display progress bars instead of the logging message.
+Removed, handling progress bars through logging was bad. It is now a separate module available [here](https://github.com/JulienBrn/TaskProgressDisplay) 
+<!-- Documentation to come. Principle : you log with the normal logging module and add a progress information. If used without beautiful logger, the normal message is displayed. However, when using BeautifulLogger the extra information is processed to display progress bars instead of the logging message.
 
  Examples:
 
  1. `logger.info("Test progressed by 20 out of 20 000 files", extra={"progress":{"counter" : "Test" , "update": 20, "max" : 20000, "unit" : "files"}})`
- 2. `logger.info("Temp2 progressed by 20 out of 20 000 files", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})`
+ 2. `logger.info("Temp2 progressed by 20 out of 20 000 files", extra={"progress":{"counter":"  Temp2", "update": 20, "max" : 600, "auto-rm" : True}})` -->
 
 ### Modifying loggers from imported files/modules
 
