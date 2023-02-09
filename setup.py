@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name='beautifullogger',
     packages=['beautifullogger'],
-    version='3.3',
+    version='4.3',
     license='MIT',
     description = 'A very simple log formatter for the logging module that can be used as is',
     author="Julien Braine",
@@ -13,5 +13,5 @@ setup(
     download_url = 'https://github.com/JulienBrn/BeautifulLogger.git',
     package_dir={'': 'src'},
     keywords=['python',  'logging'],
-    install_requires=['colorama', 'enlighten'],
+    install_requires=['colorama'],
 )
