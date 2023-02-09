@@ -1,7 +1,0 @@
-{
-    "DEBUG" : ["grey", "", []],
-    "INFO"  : ["green", "", []],
-    "WARNING"     : ["green", "on_yellow", []],
-    "ERROR" : ["green", "on_red", []],
-    "CRITICAL"  : ["white", "on_red", ["bold"]]
-}

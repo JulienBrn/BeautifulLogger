@@ -1,10 +1,14 @@
+
+
 {
-    "DEBUG" :   ["grey", "on_green", []],
-    "INFO" :   ["grey", "on_white", []],
-    "WARNING" :   ["grey", "on_yellow", []],
-    "ERROR" :   ["grey", "on_blue", []],
-    "CRITICAL" :   ["grey", "on_red", ["bold"]]
-  
+  "_comment":"Pycharm changes terminal colors. This style is well suited for pycharm dark theme",
+  "style" : {
+     "DEBUG" :   ["Fore.BLACK", "Back.GREEN"],
+     "INFO" :   ["Fore.BLACK", "Back.WHITE"],
+     "WARNING" : ["Fore.BLACK", "Back.YELLOW"],
+     "ERROR" :   ["Fore.BLACK", "Back.RED"],
+     "CRITICAL" : ["Fore.BLACK", "Back.RED", "Style.BRIGHT"]
   }
+}
   
   
