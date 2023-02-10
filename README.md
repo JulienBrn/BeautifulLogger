@@ -2,11 +2,7 @@
 
 ![Screenshot from complex_usage.py](/Assets/complex.png?raw=true "Screenshot from complex_usage.py")
 
-**WARNING** Version 4.0 made a complete overhaul of the code. Documentation and examples are not yet fully updated and you may see some issues. 
-
 A beautiful default configuration for Python loggers. 
-
-Note: improved error messages for invalid configurations should come in the next version.
 
 ## Goals :
 1. Show that loggers are better than prints :
@@ -51,6 +47,8 @@ logger.critical("test critical")
 ![Screenshot from simple_usage.py](/Assets/simple.png?raw=true "Screenshot from simple_usage.py")
 
 and then look at the [Examples](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples) and [Tests](https://github.com/JulienBrn/BeautifulLogger/tree/main/tests/SingleFile/PythonOptions) folders for more detailed use!
+
+**WARNING** The PyCharm terminal changes colors. There is currently a configuration for PyCharm dark mode in the [themes](https://github.com/JulienBrn/BeautifulLogger/tree/main/themes) folder.
 
 
 ### Basic single file usage -[Example](https://github.com/JulienBrn/BeautifulLogger/blob/main/Examples/simple_usage.py)-
