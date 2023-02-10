@@ -112,8 +112,8 @@ For now, the default parameters and their values are listed below. Note: an addi
 "displayFormat" : "[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}",
 "logfile" : "log.txt", "logmode" : "a",
 "logformat" : "[{asctime}] {levelname} @{name} {filename}:{lineno:<4d}: {message}",
-"style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] }, -->
-```   
+"style" : {"DEBUG" : "", "INFO" : "Fore.GREEN", "WARNING" : "Back.YELLOW", "ERROR" : ["Back.RED", "Fore.WHITE"], "CRITICAL" : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"] }
+```    -->
 
 ### Other functions
 
