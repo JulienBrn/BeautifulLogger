@@ -3,7 +3,9 @@ import sys
 import json
 import requests
 import pathlib
-from typing import List, Dict 
+from typing import List, Dict, TypeVar
+
+__docformat__ = "google"
 
 logger=logging.getLogger(__name__)
 
@@ -111,11 +113,19 @@ def get(str: str):
 class __opt:
     def __init__(self, val):
         self.val=val
+        
+    def __repr__ (self):
+        return "__opt({})".format(self.val)
+    def __str__ (self):
+        return "{}".format(self.val)
+    
+S = TypeVar('S')  
+Opt = S | __opt
 
 import inspect 
 
 def setup(
-    displayLevel: int = __opt(0), 
+    displayLevel: Opt[int] = __opt(0), 
     logformat: str = __opt("[{asctime}] {levelname:^8s} @{name} {filename}:{lineno:<4d}: {message}"),
     displayFormat: str = __opt("[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}"), 
     logfile: str = __opt("log.txt"),
@@ -127,14 +137,21 @@ def setup(
         logging.ERROR : ["Back.RED", "Fore.WHITE"], 
         logging.CRITICAL : ["Back.RED", "Fore.WHITE", "Style.BRIGHT"]
     }),
-    configFile: str | __opt = __opt(None)
+    configFile: str = __opt(None)
 ):
     """
         Do not worry about __opt, it is only to determine whether the argument was passed
+        Args:
+            displayLevel: An open smalltable.Table instance.
+            logformat: A sequence of strings representing the key of each table
+            row to fetch.  String keys will be UTF-8 encoded.
+            displayFormat: If True only rows with values set for all keys will be
+            returned.
     """
     if logging.getLogger().handlers ==[]:
         logging.basicConfig(format="[{asctime}] {levelname:^8s} @{name} {filename}:{lineno:<4d}: {message}", style='{')
-    
+    if not logger.level:
+        logger.setLevel(logging.WARNING)
     params=locals()
     paramConfig={k:v for k,v in params.items() if not isinstance(v, __opt)}
     
