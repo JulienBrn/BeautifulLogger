@@ -3,7 +3,7 @@ import sys
 import json
 import requests
 import pathlib
-from typing import List, Dict, TypeVar
+from typing import List, Dict, TypeVar, Union
 
 __docformat__ = "google"
 
@@ -84,7 +84,7 @@ except:
         "CRITICAL" : 50
     }
     
-def get_level(name: int | str):
+def get_level(name: Union[int,str]):
     if isinstance(name, int):
         return name
     try:
@@ -120,7 +120,7 @@ class __opt:
         return "{}".format(self.val)
     
 S = TypeVar('S')  
-Opt = S | __opt
+Opt = Union[S , __opt]
 
 import inspect 
 
@@ -130,7 +130,7 @@ def setup(
     displayFormat: str = __opt("[{asctime}] {colorama}{levelname:^8s}{reset} @{name} {filename}:{lineno:<4d}: {message}"), 
     logfile: str = __opt("log.txt"),
     logmode:str = __opt("a"),
-    style: Dict[int, str | List[str]] = __opt({
+    style: Dict[int, Union[str, List[str]]] = __opt({
         logging.DEBUG : "", 
         logging.INFO : "Fore.GREEN", 
         logging.WARNING : "Back.YELLOW", 
